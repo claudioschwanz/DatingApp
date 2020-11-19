@@ -14,7 +14,7 @@ namespace API.Data
 
         }
 
-        public DbSet<AppUser> Users;
+        public DbSet<AppUser> Users { get; set; }
 
     }
 }
