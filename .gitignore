@@ -27,6 +27,7 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+[Bb]IN/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
@@ -441,4 +442,4 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 
-appsetings.json
+appsettings.json
