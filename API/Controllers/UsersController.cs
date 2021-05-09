@@ -9,25 +9,29 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly DataContext _context;
-        public UsersController(DataContext context)
+        private readonly DataContext _userRepository;
+        private readonly IMapper _mapper;
+        public UsersController(IUserRepository UserRepository, IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
+            _userRepository = UserRepository;
         }
 
         [HttpGet]
-        [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers()
         { 
-            return await _context.Users.ToListAsync();
+            var users = await _userRepository.GetMembersAsync();
+            return Ok(users);
         }
+
         [Authorize]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUserByID(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
-            return await _context.Users.FindAsync(id);
+            return await _userRepository.GetMemberAsync(username);
         }
     }
 }
