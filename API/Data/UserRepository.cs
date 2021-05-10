@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using API.DTOs;
 
 namespace API.Data
 {
@@ -12,7 +16,7 @@ namespace API.Data
         private readonly IMapper _mapper;
 
         public UserRepository(DataContext context, IMapper mapper){
-            this.mapper = mapper;
+            _mapper = mapper;
             _context = context;
         }
         public async Task<AppUser> GetUserByIdAsync(int id)
@@ -46,12 +50,12 @@ namespace API.Data
 
         public async Task<MemberDto> GetMemberAsync(string username){
             return await _context.Users
-                .Where(x = x.Username == username)
+                .Where(x => x.UserName == username)
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
         }
         
-        public async Task<MemberDto> GetMembersAsync(string username){
+        public async Task<IEnumerable<MemberDto>> GetMembersAsync(){
             return await _context.Users
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();

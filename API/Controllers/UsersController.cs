@@ -6,15 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using AutoMapper;
+using API.DTOs;
+using API.Interfaces;
 
 namespace API.Controllers
 {
     [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly DataContext _userRepository;
+        private readonly UserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UsersController(IUserRepository UserRepository, IMapper mapper)
+        public UsersController(UserRepository UserRepository, IMapper mapper)
         {
             _mapper = mapper;
             _userRepository = UserRepository;
