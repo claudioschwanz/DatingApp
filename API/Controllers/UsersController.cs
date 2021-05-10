@@ -15,9 +15,9 @@ namespace API.Controllers
     [Authorize]
     public class UsersController : BaseApiController
     {
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UsersController(UserRepository UserRepository, IMapper mapper)
+        public UsersController(IUserRepository UserRepository, IMapper mapper)
         {
             _mapper = mapper;
             _userRepository = UserRepository;
