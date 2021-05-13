@@ -11,7 +11,6 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit {
   title = 'The Dating App';
-  users: any;
 
   constructor( private accountService: AccountService) { }
 
@@ -19,9 +18,10 @@ export class AppComponent implements OnInit {
   ngOnInit(): void { 
     this.setCurrentUser();
   }
+
   setCurrentUser() {
       const user: User = JSON.parse(localStorage.getItem('user')||'');
-      this.accountService.setCurrentUSer(user||'');
+      this.accountService.setCurrentUser(user||'');
     }
 
   
