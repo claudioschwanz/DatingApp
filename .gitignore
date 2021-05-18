@@ -443,3 +443,5 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 appsettings.json
+API/appsettings.json
+.gitignore
