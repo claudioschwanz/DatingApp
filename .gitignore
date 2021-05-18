@@ -445,3 +445,4 @@ $RECYCLE.BIN/
 appsettings.json
 API/appsettings.json
 .gitignore
+API/datingapp.db
