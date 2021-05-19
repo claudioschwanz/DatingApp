@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace API.Interfaces
 {
-    public class IPhotoService
+    public interface IPhotoService
     {
-        public async Task<ImageUploadResults> addPhotoAsync(IFormFile file);
-        public async Task<DeletionResult> deletePhotoAsync(string publicId);
+        Task<ImageUploadResult> AddPhotoAsync(IFormFile file);
+        Task<DeletionResult> DeletePhotoAsync(string publicId);
     }
 }
