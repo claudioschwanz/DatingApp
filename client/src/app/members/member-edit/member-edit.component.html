@@ -52,9 +52,9 @@
                         <input  [(ngModel)]="member.country"  type="text" name="country" class="form-control mx-2">
                     </div>
                 </form>
-            </tab>
-            <tab heading="Photos">
-
+            </tab> 
+            <tab heading="Edit Photos">
+                <app-photo-editor [member] ="member"></app-photo-editor>
             </tab>
         </tabset>
     </div>
